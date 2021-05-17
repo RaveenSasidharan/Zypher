@@ -42,6 +42,7 @@ public class FormEditText  extends FrameLayout implements IFormControl {
     {
         mFormBinding = FormInputLayoutBinding.inflate(LayoutInflater.from(getContext()));
 
+
         if (formData.getType().equals("number"))
             mFormBinding.formInputEdit.setInputType(InputType.TYPE_CLASS_NUMBER);
 
@@ -51,7 +52,7 @@ public class FormEditText  extends FrameLayout implements IFormControl {
             mFormBinding.formInputEdit.setSingleLine(true);
 
         mFormBinding.formInputEdit.setHint(formData.getFieldName());
-
+        mFormBinding.formInputLayout.setHint(formData.getFieldName());
         addView(mFormBinding.getRoot());
 
     }

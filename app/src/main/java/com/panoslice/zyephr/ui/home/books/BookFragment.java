@@ -1,12 +1,15 @@
 package com.panoslice.zyephr.ui.home.books;
 
+import android.os.Build;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.widget.PopupMenu;
 import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -25,6 +28,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class BookFragment extends BaseFragment<FragmentBookBinding, BookViewModel>
         implements BookNavigator,
@@ -159,18 +164,35 @@ public class BookFragment extends BaseFragment<FragmentBookBinding, BookViewMode
         return false;
     }
 
+
     @Override
     public boolean onQueryTextSubmit(String query) {
-        List<Book> filteredList = new ArrayList<>();
+        if (query == null || TextUtils.isEmpty(query))
+        {
+            mBookAdapter.setmBookList(mBookList);
+            mBookAdapter.notifyDataSetChanged();
+            return false;
+        }
+
+        Predicate<Book> bookPredicate = book ->book.getBookName().toLowerCase().contains(query.toLowerCase());
+        List<Book> filteredList = mBookList.stream().filter(bookPredicate).collect(Collectors.toList());
         mBookAdapter.setmBookList(filteredList);
         mBookAdapter.notifyDataSetChanged();
         return false;
     }
 
     @Override
-    public boolean onQueryTextChange(String newText) {
+    public boolean onQueryTextChange(String query) {
 
-        List<Book> filteredList = new ArrayList<>();
+        if (query == null || TextUtils.isEmpty(query))
+        {
+            mBookAdapter.setmBookList(mBookList);
+            mBookAdapter.notifyDataSetChanged();
+            return false;
+        }
+
+        Predicate<Book> bookPredicate = book ->book.getBookName().toLowerCase().contains(query.toLowerCase());
+        List<Book> filteredList = mBookList.stream().filter(bookPredicate).collect(Collectors.toList());
         mBookAdapter.setmBookList(filteredList);
         mBookAdapter.notifyDataSetChanged();
         return false;
