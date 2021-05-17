@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="formReportViewModel"
+            type="com.panoslice.zyephr.ui.form.FormReportViewModel" />
+
+        <variable
+            name="formActivity"
+            type="com.panoslice.zyephr.ui.form.FormReportActivity" />
+    </data>
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:background="@color/black_effective"
+        android:layout_height="match_parent">
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/black">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+                android:drawableLeft="@drawable/ic_arrow_back_white_24dp"
+                android:drawablePadding="5dp"
+                android:paddingLeft="16dp"
+                android:paddingTop="15dp"
+                android:onClick="@{() -> formActivity.backButtonFinish()}"
+                android:paddingBottom="15dp"
+                android:gravity="center_horizontal"
+                android:text="Report History"/>
+        </androidx.cardview.widget.CardView>
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/reportRecycler"/>
+
+    </LinearLayout>
+</layout>

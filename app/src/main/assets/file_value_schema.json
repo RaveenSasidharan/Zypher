@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "title": "Filed Check JSON",
+  "type": "object",
+  "properties": {
+    "age": {
+      "type": "integer",
+      "minimum": 20,
+      "maximum": 60
+    },
+    "name": {
+      "type": "string"
+    },
+    "adress": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "name"
+  ]
+}

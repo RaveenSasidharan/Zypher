@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/book_name"
+        android:title="Book Name" />
+    <item android:id="@+id/author"
+        android:title="Author" />
+    <item android:id="@+id/category"
+        android:title="Category" />
+    <item android:id="@+id/pages"
+        android:title="Pages" />
+    <item android:id="@+id/published_date"
+        android:title="Published Date" />
+</menu>

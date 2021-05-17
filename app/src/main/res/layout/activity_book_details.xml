@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="bookDetailModel"
+            type="com.panoslice.zyephr.ui.book.BookDetailViewModel" />
+
+        <variable
+            name="bookDetailActivity"
+            type="com.panoslice.zyephr.ui.book.BookDetailsActivity" />
+    </data>
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:background="@color/black_effective"
+        android:layout_height="match_parent">
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/black">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#ffffff"
+                android:textSize="20sp"
+                android:paddingLeft="16dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:onClick="@{() ->bookDetailActivity.backButtonFinish()}"
+                android:drawableLeft="@drawable/ic_arrow_back_white_24dp"
+                android:drawablePadding="5dp"
+                android:gravity="center_horizontal"
+                android:text="Book Details"/>
+        </androidx.cardview.widget.CardView>
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@color/gray"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="16dp"
+            android:textSize="18sp"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
+            tools:text="Art of Programming"
+            android:id="@+id/name"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+
+            android:textSize="15sp"
+            android:textColor="#ffffff"
+            tools:text="Richard Dickerns"
+            android:id="@+id/author"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:layout_marginLeft="16dp"
+
+            android:textStyle="italic"
+            android:layout_marginTop="7dp"
+            tools:text="Crime"
+            android:textColor="#80ffffff"
+            android:id="@+id/category"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+
+            android:textSize="15sp"
+            tools:text="200 Pages"
+            android:layout_marginTop="10dp"
+            android:textColor="#ffffff"
+            android:id="@+id/page"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="16dp"
+
+            tools:text="Art of Programming"
+            android:textColor="#ffffff"
+            android:id="@+id/publish_date"/>
+
+    </LinearLayout>
+</layout>
