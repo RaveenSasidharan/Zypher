@@ -77,9 +77,8 @@ dependencies {
     // logger
     implementation "com.jakewharton.timber:timber:$rootProject.timberVersion"
     implementation 'androidx.multidex:multidex:2.0.1'
-
-    implementation 'net.jimblackler.jsonschemafriend:core:0.10.5'
     implementation 'com.facebook.shimmer:shimmer:0.5.0'
+    implementation 'com.github.everit-org.json-schema:org.everit.json.schema:1.12.2'
     // dependencies for local unit tests
     testImplementation "junit:junit:$rootProject.ext.junitVersion"
     testImplementation "org.mockito:mockito-core:$rootProject.mockitoVersion"

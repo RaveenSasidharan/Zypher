@@ -20,12 +20,10 @@ import com.panoslice.zyephr.ui.base.BaseFragment;
 import com.panoslice.zyephr.ui.form.FormReportActivity;
 import com.panoslice.zyephr.utils.CommonUtils;
 
-import net.jimblackler.jsonschemafriend.Schema;
-import net.jimblackler.jsonschemafriend.SchemaException;
-import net.jimblackler.jsonschemafriend.SchemaStore;
-import net.jimblackler.jsonschemafriend.Validator;
 
-
+import org.everit.json.schema.Schema;
+import org.everit.json.schema.ValidationException;
+import org.everit.json.schema.loader.SchemaLoader;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -107,19 +105,17 @@ public class FormFragment extends BaseFragment<FragmentFormBinding, FormViewMode
         JSONObject validationObject = new JSONObject(mValidationSchema);
 
         try {
-            SchemaStore schemaStore = new SchemaStore(); // Initialize a SchemaStore.
-            Schema schema = schemaStore.loadSchema(validationObject); // Load the schema.
-            Validator validator = new Validator(); // Create a validator.
-            validator.validate(schema, responseObject);
-            Log.e("form", "==>truwe;");
+            Schema schema = SchemaLoader.load(validationObject);
+            schema.validate(responseObject);
             return true;
-        } catch (SchemaException e) {
-            Log.e("form", "==>false;"+e.getMessage());
-
-            e.printStackTrace();
-
+        }catch (ValidationException validationException)
+        {
+            Toast.makeText(getActivity(), "" + validationException.getErrorMessage(), Toast.LENGTH_LONG).show();
             return false;
         }
+
+
+
     }
 
 
@@ -144,16 +140,21 @@ public class FormFragment extends BaseFragment<FragmentFormBinding, FormViewMode
             for (IFormControl formControl : formControlList)
             {
                 if (formControl.getFormResponse() != null)
-                    responseObject.put(formControl.getFormResponse().getFormTitle(), formControl.getFormResponse().getFormValue());
+                {
+                    if (formControl.getFormResponse().getFormType().equals("number"))
+                        responseObject.put(formControl.getFormResponse().getFormTitle(), Integer.parseInt(formControl.getFormResponse().getFormValue()));
+                    else
+                        responseObject.put(formControl.getFormResponse().getFormTitle(), formControl.getFormResponse().getFormValue());
+
+                }
             }
 
-//            if (isValidated(responseObject))
-  //          {
+            if (isValidated(responseObject)){
                 FormEntity formEntity = new FormEntity(mUUID, responseObject.toString());
                 mViewModel.insertData(formEntity);
 
                 Toast.makeText(getActivity(), "Data Saved", Toast.LENGTH_LONG).show();
-    //        }
+            }
         } catch (JSONException e) {
             Log.e("form","error"+e.getMessage());
             e.printStackTrace();

@@ -66,6 +66,7 @@ public class FormEditText  extends FrameLayout implements IFormControl {
         FormResponse formResponse = new FormResponse();
         formResponse.setFormTitle(formData.getFieldName());
         formResponse.setFormValue(mFormBinding.formInputEdit.getText().toString());
+        formResponse.setFormType(formData.getType());
 
         return formResponse;
     }

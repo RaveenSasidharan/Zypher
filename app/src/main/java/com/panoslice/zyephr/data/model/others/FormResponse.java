@@ -2,10 +2,20 @@ package com.panoslice.zyephr.data.model.others;
 
 public class FormResponse {
     private String formTitle;
+    private String formType;
 
-    public FormResponse(String formTitle, String formValue) {
+    public FormResponse(String formTitle, String formValue, String formType) {
         this.formTitle = formTitle;
         this.formValue = formValue;
+        this.formValue = formType;
+    }
+
+    public String getFormType() {
+        return formType;
+    }
+
+    public void setFormType(String formType) {
+        this.formType = formType;
     }
 
     public FormResponse() {
