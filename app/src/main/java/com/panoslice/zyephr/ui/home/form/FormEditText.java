@@ -51,7 +51,7 @@ public class FormEditText  extends FrameLayout implements IFormControl {
         else
             mFormBinding.formInputEdit.setSingleLine(true);
 
-        mFormBinding.formInputEdit.setHint(formData.getFieldName());
+
         mFormBinding.formInputLayout.setHint(formData.getFieldName());
         addView(mFormBinding.getRoot());
 

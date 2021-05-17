@@ -167,7 +167,8 @@ public class BookFragment extends BaseFragment<FragmentBookBinding, BookViewMode
 
     @Override
     public boolean onQueryTextSubmit(String query) {
-        if (query == null || TextUtils.isEmpty(query))
+        if ( (query == null || TextUtils.isEmpty(query))
+                        && mBookList != null)
         {
             mBookAdapter.setmBookList(mBookList);
             mBookAdapter.notifyDataSetChanged();
@@ -184,7 +185,8 @@ public class BookFragment extends BaseFragment<FragmentBookBinding, BookViewMode
     @Override
     public boolean onQueryTextChange(String query) {
 
-        if (query == null || TextUtils.isEmpty(query))
+        if ( (query == null || TextUtils.isEmpty(query))
+                        && mBookList != null)
         {
             mBookAdapter.setmBookList(mBookList);
             mBookAdapter.notifyDataSetChanged();

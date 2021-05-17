@@ -147,13 +147,13 @@ public class FormFragment extends BaseFragment<FragmentFormBinding, FormViewMode
                     responseObject.put(formControl.getFormResponse().getFormTitle(), formControl.getFormResponse().getFormValue());
             }
 
-            if (isValidated(responseObject))
-            {
+//            if (isValidated(responseObject))
+  //          {
                 FormEntity formEntity = new FormEntity(mUUID, responseObject.toString());
                 mViewModel.insertData(formEntity);
 
                 Toast.makeText(getActivity(), "Data Saved", Toast.LENGTH_LONG).show();
-            }
+    //        }
         } catch (JSONException e) {
             Log.e("form","error"+e.getMessage());
             e.printStackTrace();
